@@ -1,6 +1,8 @@
 from google.cloud import firestore
 import sqlite3
 
+DATABASE_FILE = "spaniels_data.db"
+
 def push_to_cloud():
     
     conn = sqlite3.connect(DATABASE_FILE)

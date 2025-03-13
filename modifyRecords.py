@@ -23,14 +23,16 @@ def create_table():
     conn.close()   
 
 
-def insert_record(name, gender, spots, favourite_toy, favourite_treat):
+def insert_record(springer):
     conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
+    
+    print(springer.name)
 
     cursor.execute("""
         INSERT INTO springer_spaniels (name, gender, spots, favourite_toy, favourite_treat)
         VALUES (?, ?, ?, ?, ?)
-    """, (name, gender, spots, favourite_toy, favourite_treat))
+    """, (springer.name, springer.gender, springer.spots, springer.favourite_toy, springer.favourite_treat))
 
     conn.commit()
     conn.close()
