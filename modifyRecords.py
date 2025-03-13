@@ -1,11 +1,10 @@
 import sqlite3
+import os
 
-# Database file name
 DATABASE_FILE = "spaniels_data.db"
 
-# Function to create the table (if it doesn't exist)
 def create_table():
-    conn = sqlite3.connect(DATABASE_FILE)  # Connect to SQLite database file
+    conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -19,10 +18,11 @@ def create_table():
         )
     """)
 
-    conn.commit()  # Save changes
-    conn.close()   # Close connection
+    # save & close
+    conn.commit()
+    conn.close()   
 
-# Function to insert a record into the database
+
 def insert_record(name, gender, spots, favourite_toy, favourite_treat):
     conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
@@ -36,9 +36,8 @@ def insert_record(name, gender, spots, favourite_toy, favourite_treat):
     conn.close()
     
     print("Records have been written to the database!")
+    
 
-
-# Function to delete a record by ID or name
 def delete_record(identifier):
     conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
@@ -49,7 +48,7 @@ def delete_record(identifier):
     else:
         cursor.execute("SELECT * FROM springer_spaniels WHERE name = ?", (identifier,))
 
-    # retrieves row of query result
+    # retrieves rows
     record = cursor.fetchone()
 
     if not record:
@@ -66,7 +65,6 @@ def delete_record(identifier):
         conn.close()
         return
 
-    # Perform the deletion
     if identifier.isdigit():
         cursor.execute("DELETE FROM springer_spaniels WHERE id = ?", (identifier,))
     else:

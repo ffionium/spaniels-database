@@ -1,4 +1,5 @@
 import modifyRecords
+import writeToCloud
 import os
 
 def main():
@@ -10,7 +11,8 @@ def main():
         print("1. Add a new Springer Spaniel")
         print("2. View all records")
         print("3. Delete a record by name or id.")
-        print("4. Exit")
+        print("4. Sync database")
+        print("5. Exit")
 
         choice = input("Enter your choice (1-4): ")
 
@@ -33,12 +35,14 @@ def main():
             modifyRecords.delete_record(spanielToDel)  
 
         elif choice == "4":
+            writeToCloud.push_to_cloud()
+
+        elif choice == "5":
             print("Exiting application. Goodbye!")
             break
 
         else:
             print("Invalid choice. Please enter a number between 1 and 3.")
 
-# Run the application
 if __name__ == "__main__":
     main()
