@@ -3,6 +3,8 @@ import os
 
 def main():
 
+    modifyRecords.create_table()
+
     while True:
         print("Springer Spaniels Database Application")
         print("1. Add a new Springer Spaniel")
@@ -10,7 +12,7 @@ def main():
         print("3. Delete a record by name or id.")
         print("4. Exit")
 
-        choice = input("Enter your choice (1-3): ")
+        choice = input("Enter your choice (1-4): ")
 
         if choice == "1":
             name = input("Enter dog's name: ")
