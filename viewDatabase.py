@@ -14,7 +14,7 @@ def fetch_data():
 # Create GUI window
 root = tk.Tk()
 root.title("Springer Spaniels Database Viewer")
-root.geometry("600x400")
+root.geometry("1200x400")
 
 # Create Treeview (Table)
 tree = ttk.Treeview(root, columns=("ID", "Name", "Gender", "Spots", "Favourite Toy", "Favourite Treat"), show="headings")
@@ -34,7 +34,7 @@ scrollbar = ttk.Scrollbar(root, orient="vertical", command=tree.yview)
 tree.configure(yscroll=scrollbar.set)
 
 # Pack widgets
-tree.pack(expand=True, fill="both", padx=10, pady=10)
+tree.pack(expand=True, fill="both", padx=8, pady=8)
 scrollbar.pack(side="right", fill="y")
 
 # Run the GUI
